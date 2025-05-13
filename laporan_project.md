@@ -60,9 +60,19 @@ Pima Indians Diabetes Database [Kaggle](https://www.kaggle.com/datasets/uciml/pi
 ## Data Preparation
 
 1. Missing Value Handling:  
-Nilai `0` pada kolom `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, dan `BMI` diganti dengan `NaN` karena dianggap tidak valid secara medis.  
-Nilai `NaN` kemudian diisi dengan median dari setiap kolom untuk menangani missing value. Hal ini dilakukan karena data yang hilang dapat mengganggu performa model dan imputasi dengan median merupakan cara yang representatif untuk mengisi missing value.
+Nilai `0` pada kolom `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, dan `BMI` diganti dengan `NaN` karena dianggap tidak valid secara medis. Nilai `NaN` kemudian diisi dengan median dari setiap kolom untuk menangani missing value. Hal ini dilakukan karena data yang hilang dapat mengganggu performa model dan imputasi dengan median merupakan cara yang representatif untuk mengisi missing value. Namun dalam dataset Pima Indians Diabetes Database tidak ditemukan nilai `0`.
 
+2. Data Splitting:
+Data dibagi menjadi data train (`80%`) dan data test (`20%`) menggunakan fungsi `train_test_split`.  
+Data train digunakan untuk melatih model, sedangkan data test digunakan untuk mengevaluasi performa model pada data yang belum pernah dilihat sebelumnya. Pembagian data ini penting untuk memastikan kemampuan generalisasi model.
+
+3. Scaling:
+`StandardScaler` digunakan untuk menyamakan skala antar fitur.  
+Scaling dilakukan agar fitur dengan skala yang berbeda tidak mendominasi perhitungan jarak dalam algoritma machine learning. Dengan skala yang sama, semua fitur memiliki bobot yang setara dalam proses pelatihan model.
+
+4. Penanganan Data Tidak Seimbang (SMOTE):
+Menerapkan teknik `SMOTE` (Synthetic Minority Over-sampling Technique) untuk mengatasi ketidakseimbangan kelas pada data training.  
+Ketidakseimbangan kelas dapat menyebabkan model cenderung memprediksi kelas mayoritas. `SMOTE` menghasilkan data sintetis untuk kelas minoritas sehingga distribusi kelas menjadi lebih seimbang dan meningkatkan performa model dalam memprediksi kelas minoritas.
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
