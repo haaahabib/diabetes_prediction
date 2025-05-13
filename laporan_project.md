@@ -2,43 +2,40 @@
 
 ## Domain Proyek
 
-Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan kadar glukosa darah (atau gula darah), yang lama-kelamaan dapat menyebabkan kerusakan serius pada jantung, pembuluh darah, mata, ginjal, dan saraf. Sekitar 830 juta orang di seluruh dunia mengidap diabetes [[1]](https://www.who.int/health-topics/diabetes). Deteksi dini penting untuk mencegah komplikasi kerusakan serius pada organ-organ manusia. Proyek ini bertujuan membangun model prediktif untuk mengidentifikasi risiko diabetes berdasarkan parameter klinis pasien.
+Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan kadar glukosa darah atau gula darah, yang lama-kelamaan dapat menyebabkan kerusakan serius pada jantung, pembuluh darah, mata, ginjal, dan saraf. Menurut laporan WHO, sekitar 830 juta orang di seluruh dunia mengidap diabetes [[1]](https://www.who.int/health-topics/diabetes). Untuk mempercepat diagnosis dan mengetahui penyakit diabetes seseorang diperlukan deteksi dini. Deteksi dini penting untuk mencegah komplikasi kerusakan serius pada organ-organ manusia dan meningkatkan kualitas hidup. Proyek ini bertujuan membangun model prediktif untuk mengidentifikasi risiko diabetes berdasarkan parameter klinis pasien.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-- Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
-- Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
+## Referensi:
+1. Dataset: [Pima Indians Diabetes Database](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database/data) (768 sampel).
+2. I. Tasin, T. U. Nabil, S. Islam, and R. Khan, "Diabetes prediction using machine learning and explainable AI techniques," Healthcare Technology Letters, vol. 10, no. 1, pp. 1-10, Feb. 2023, doi: 10.1049/htl2.12039. [PubMed](https://pmc.ncbi.nlm.nih.gov/articles/PMC10107388/)
+3. World Health Organization, [WHO, 2023](https://www.who.int/health-topics/diabetes)
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
+## Business Understanding
 
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Prevalensi diabetes di Indonesia terus meningkat, dari 10.9% menjadi 11.7% pada tahun 2023 (Kemenkes)[https://rspermatajonggol.com/ini-5-sebab-diabetes-tumbuh-subur-di-indonesia/]. 
+- Keterlambatan diagnosis diabetes dapat menyebabkan komplikasi serius seperti jantung, pembuluh darah, mata, ginjal, dan saraf.
+- Sistem prediksi berbasis machine learning dapat membantu tenaga medis dalam melakukan skrining awal dan mengidentifikasi pasien yang berisiko tinggi, sehingga diagnosis dapat dilakukan lebih cepat.
+- Dataset diabetes seringkali memiliki data imbalance, di mana jumlah pasien non-diabetes jauh lebih banyak daripada pasien diabetes. Hal ini dapat menyebabkan model cenderung memprediksi pasien sebagai non-diabetes, sehingga akurasi prediksi untuk pasien diabetes menjadi rendah.
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+- Membangun model klasifikasi machine learning dengan akurasi minimal 75% pada data test.
+- Menyediakan sistem yang dapat memberikan probabilitas risiko diabetes dan rekomendasi untuk pemeriksaan lanjutan, sehingga dapat digunakan sebagai alat bantu second opinion bagi tenaga medis.
+- Menangani data imbalance menggunakan teknik oversampling SMOTE untuk meningkatkan performa model dalam memprediksi pasien diabetes.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+### Solution Statements
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
+Goal 1: Membangun model klasifikasi dengan akurasi minimal 75% pada data test.
+- Solusi 1: Membandingkan performa algoritma Logistic Regression, Random Forest, dan Gradient Boosting. Alasannya Logistic Regression adalah algoritma dasar yang mudah diinterpretasi, Random Forest memiliki performa yang baik dan robust, sedangkan Gradient Boosting dapat menghasilkan model yang akurat. Perbandingan ini bertujuan untuk memilih model yang paling optimal untuk dataset diabetes.
+- Solusi 2: Meningkatkan performa model terbaik dengan Hyperparameter Tuning. Alasannya, hyperparameter tuning memungkinkan optimasi parameter model untuk mencapai performa terbaik. 
 
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+Goal 2: Menyediakan sistem yang dapat memberikan probabilitas risiko diabetes dan rekomendasi untuk pemeriksaan lanjutan, sehingga dapat digunakan sebagai alat bantu second opinion bagi tenaga medis.
 
+Goal 3: Menangani data imbalance untuk meningkatkan performa model dalam memprediksi pasien diabetes. Dengan menerapkan teknik SMOTE (Synthetic Minority Over-sampling Technique) pada data latih. Alasannya adalah SMOTE akan menyeimbangkan jumlah data pasien diabetes dan non-diabetes, sehingga model dapat mempelajari pola dari kedua kelas dengan lebih baik dan meningkatkan performa, khususnya dalam mendeteksi pasien diabetes.
+    
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
