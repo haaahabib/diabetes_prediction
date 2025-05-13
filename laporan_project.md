@@ -5,6 +5,7 @@
 Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan kadar glukosa darah atau gula darah, yang lama-kelamaan dapat menyebabkan kerusakan serius pada jantung, pembuluh darah, mata, ginjal, dan saraf. Menurut laporan WHO, sekitar 830 juta orang di seluruh dunia mengidap diabetes [[1]](https://www.who.int/health-topics/diabetes). Untuk mempercepat diagnosis dan mengetahui penyakit diabetes seseorang diperlukan deteksi dini. Deteksi dini penting untuk mencegah komplikasi kerusakan serius pada organ-organ manusia dan meningkatkan kualitas hidup. Proyek ini bertujuan membangun model prediktif untuk mengidentifikasi risiko diabetes berdasarkan parameter klinis pasien.
 
 ## Referensi:
+
 1. Dataset: [Pima Indians Diabetes Database](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database/data) (768 sampel).
 2. I. Tasin, T. U. Nabil, S. Islam, and R. Khan, "Diabetes prediction using machine learning and explainable AI techniques," Healthcare Technology Letters, vol. 10, no. 1, pp. 1-10, Feb. 2023, doi: 10.1049/htl2.12039. [PubMed](https://pmc.ncbi.nlm.nih.gov/articles/PMC10107388/)
 3. World Health Organization, [WHO, 2023](https://www.who.int/health-topics/diabetes)
@@ -15,7 +16,7 @@ Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan ka
 
 ### Problem Statements
 
-- Prevalensi diabetes di Indonesia terus meningkat, dari 10.9% menjadi 11.7% pada tahun 2023 (Kemenkes)[https://rspermatajonggol.com/ini-5-sebab-diabetes-tumbuh-subur-di-indonesia/]. 
+- Prevalensi diabetes di Indonesia terus meningkat, dari 10.9% menjadi 11.7% pada tahun 2023 [Kemenkes](https://rspermatajonggol.com/ini-5-sebab-diabetes-tumbuh-subur-di-indonesia/)
 - Keterlambatan diagnosis diabetes dapat menyebabkan komplikasi serius seperti jantung, pembuluh darah, mata, ginjal, dan saraf.
 - Sistem prediksi berbasis machine learning dapat membantu tenaga medis dalam melakukan skrining awal dan mengidentifikasi pasien yang berisiko tinggi, sehingga diagnosis dapat dilakukan lebih cepat.
 - Dataset diabetes seringkali memiliki data imbalance, di mana jumlah pasien non-diabetes jauh lebih banyak daripada pasien diabetes. Hal ini dapat menyebabkan model cenderung memprediksi pasien sebagai non-diabetes, sehingga akurasi prediksi untuk pasien diabetes menjadi rendah.
@@ -37,24 +38,31 @@ Goal 2: Menyediakan sistem yang dapat memberikan probabilitas risiko diabetes da
 Goal 3: Menangani data imbalance untuk meningkatkan performa model dalam memprediksi pasien diabetes. Dengan menerapkan teknik SMOTE (Synthetic Minority Over-sampling Technique) pada data latih. Alasannya adalah SMOTE akan menyeimbangkan jumlah data pasien diabetes dan non-diabetes, sehingga model dapat mempelajari pola dari kedua kelas dengan lebih baik dan meningkatkan performa, khususnya dalam mendeteksi pasien diabetes.
     
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Pima Indians Diabetes Database [Kaggle](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database/code) (768 sampel)
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+### Variabel-variabel pada Pima Indians Diabetes Database adalah sebagai berikut:
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+- Pregnancies: Jumlah kehamilan
+- Glucose: Konsentrasi glukosa plasma 2 jam dalam tes toleransi glukosa oral
+- BloodPressure: Tekanan darah diastolik (mm Hg)
+- SkinThickness: Ketebalan lipatan kulit trisep (mm)
+- Insulin: Insulin serum 2 jam (mu U/ml)
+- BMI: Indeks massa tubuh (berat dalam kg/(tinggi dalam m)^2)
+- DiabetesPedigreeFunction: Variabel yang menunjukkan riwayat diabetes dalam keluarga
+- Age: Usia dalam tahun
+- Outcome: Variabel kelas (0 atau 1), di mana 0 menunjukkan tidak menderita diabetes dan 1 menunjukkan menderita diabetes.
+
+### Distribusi Pasien Diabetes dan Non-Diabetes pada Pima Indians Diabetes Database
+
+![image](https://github.com/user-attachments/assets/f4903af7-5f29-4666-9d7c-7486e56f7379)
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. Missing Value Handling:  
+Nilai `0` pada kolom `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, dan `BMI` diganti dengan `NaN` karena dianggap tidak valid secara medis.  
+Nilai `NaN` kemudian diisi dengan median dari setiap kolom untuk menangani missing value. Hal ini dilakukan karena data yang hilang dapat mengganggu performa model dan imputasi dengan median merupakan cara yang representatif untuk mengisi missing value.
+
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
