@@ -115,20 +115,42 @@ Meskipun tuning tidak meningkatkan akurasi `RandomForestClassifier`, model ini t
 - *Hyperparameter* default sudah cukup optimal untuk dataset ini.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+### Model Terbaik
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Model terbaik yang dipilih adalah `Random Forest` dengan akurasi sebesar `0.77`.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+### Akurasi
 
-**---Ini adalah bagian akhir laporan---**
+- Logistic Regression: 0.71  
+- Random Forest: 0.77  
+- Gradient Boosting: 0.73  
+- Tuned Random Forest: 0.77
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+### Recall
 
+| Model              | Recall (0) | Recall (1) |
+|--------------------|------------|------------|
+| Logistic Regression| 0.71       | 0.71       |
+| Random Forest      | 0.79       | 0.73       |
+| Gradient Boosting  | 0.74       | 0.71       |
+
+Dalam tugas klasifikasi, **recall** sangat penting, terutama ketika kita ingin memastikan bahwa semua instance positif (misalnya, pasien diabetes) dapat terdeteksi dengan baik. Recall mengukur kemampuan model untuk menemukan semua kasus positif yang sebenarnya, sehingga semakin tinggi nilai recall, semakin sedikit kasus positif yang terlewat (false negatives). Dalam konteks diagnosis medis, misclassifying a positive case (e.g., misdiagnosing a diabetic patient as healthy) bisa berisiko tinggi, sehingga model dengan recall yang lebih tinggi sangat diutamakan untuk mengurangi potensi kesalahan diagnosis.
+
+### Confusion Matrix
+
+![image](https://github.com/user-attachments/assets/b32340cf-b9ca-4675-8c0a-91a1f9287a76)
+
+
+- True Negative (TN): 41 Pasien non-diabetes diprediksi benar sebagai non-diabetes
+- False Positive (FP): 14 Pasien non-diabetes salah diprediksi sebagai diabetes
+- False Negative (FN): 22 Pasien diabetes salah diprediksi sebagai non-diabetes
+- True Positive (TP): 77 Pasien diabetes diprediksi benar sebagai diabetes
+
+---
+
+### Kesimpulan
+Berdasarkan metrik evaluasi yang digunakan, model `Random Forest` menunjukkan performa yang baik dalam memprediksi risiko diabetes.  
+
+
+**--- Terima Kasih ---**
