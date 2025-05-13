@@ -2,7 +2,7 @@
 
 ## Domain Proyek
 
-Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan kadar glukosa darah (atau gula darah), yang lama-kelamaan dapat menyebabkan kerusakan serius pada jantung, pembuluh darah, mata, ginjal, dan saraf. Sekitar 830 juta orang di seluruh dunia mengidap diabetes [1](https://www.who.int/health-topics/diabetes). Deteksi dini penting untuk mencegah komplikasi kerusakan serius pada organ-organ manusia. Proyek ini bertujuan membangun model prediktif untuk mengidentifikasi risiko diabetes berdasarkan parameter klinis pasien.
+Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan kadar glukosa darah (atau gula darah), yang lama-kelamaan dapat menyebabkan kerusakan serius pada jantung, pembuluh darah, mata, ginjal, dan saraf. Sekitar 830 juta orang di seluruh dunia mengidap diabetes [[1]](https://www.who.int/health-topics/diabetes). Deteksi dini penting untuk mencegah komplikasi kerusakan serius pada organ-organ manusia. Proyek ini bertujuan membangun model prediktif untuk mengidentifikasi risiko diabetes berdasarkan parameter klinis pasien.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
