@@ -12,8 +12,6 @@ Diabetes merupakan penyakit metabolik kronis yang ditandai dengan peningkatan ka
 
 ## Business Understanding
 
-## Business Understanding
-
 ### Problem Statements
 
 - Prevalensi diabetes di Indonesia terus meningkat, dari 10.9% menjadi 11.7% pada tahun 2023 [Kemenkes](https://rspermatajonggol.com/ini-5-sebab-diabetes-tumbuh-subur-di-indonesia/)
@@ -75,12 +73,46 @@ Menerapkan teknik `SMOTE` (Synthetic Minority Over-sampling Technique) untuk men
 Ketidakseimbangan kelas dapat menyebabkan model cenderung memprediksi kelas mayoritas. `SMOTE` menghasilkan data sintetis untuk kelas minoritas sehingga distribusi kelas menjadi lebih seimbang dan meningkatkan performa model dalam memprediksi kelas minoritas.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+Pada proses pemodelan, digunakan tiga algoritma machine learning:
+
+#### 1. Logistic Regression
+- **Tahapan:** Inisialisasi model dengan `LogisticRegression(max_iter=1000)`. Parameter `max_iter` ditingkatkan untuk memastikan konvergensi model.  
+- **Kelebihan:** Sederhana, mudah diinterpretasi, dan efisien untuk dataset yang besar.  
+- **Kekurangan:** Asumsi linearitas, sensitif terhadap outlier, dan mungkin kurang akurat untuk data yang kompleks.  
+
+#### 2. Random Forest
+- **Tahapan:** Inisialisasi model dengan `RandomForestClassifier()`.  
+- **Kelebihan:** Akurasi tinggi, robust terhadap outlier dan missing value, dapat menangani data non-linear.  
+- **Kekurangan:** Kompleks, sulit diinterpretasi, dan membutuhkan waktu pelatihan yang lebih lama.  
+
+#### 3. Gradient Boosting
+- **Tahapan:** Inisialisasi model dengan `GradientBoostingClassifier()`.  
+- **Kelebihan:** Akurasi tinggi, dapat menangani data non-linear, dan performa yang baik pada berbagai jenis dataset.  
+- **Kekurangan:** Kompleks, cenderung overfitting jika tidak di-*tuning* dengan baik, dan membutuhkan waktu pelatihan yang lebih lama.  
+
+---
+
+### Hyperparameter Tuning (Random Forest)
+
+Karena `RandomForestClassifier` memberikan performa terbaik pada tahap awal, dilakukan *hyperparameter tuning* menggunakan `GridSearchCV` untuk meningkatkan performanya.
+
+- **Parameter yang di-tuning:**
+  - `n_estimators`: Jumlah pohon dalam forest (`100`, `200`)
+  - `max_depth`: Kedalaman maksimum setiap pohon (`5`, `10`, `None`)
+  - `min_samples_split`: Jumlah minimum sampel yang diperlukan untuk membagi node (`2`, `5`)
+
+- **Proses:**  
+  `GridSearchCV` mengevaluasi semua kombinasi parameter menggunakan *5-fold cross-validation* dan memilih kombinasi terbaik berdasarkan akurasi.
+
+---
+
+### Pemilihan Model Terbaik
+
+Meskipun tuning tidak meningkatkan akurasi `RandomForestClassifier`, model ini tetap dipilih sebagai model terbaik karena:
+
+- Akurasi awal yang tinggi dibandingkan algoritma lain.
+- *Hyperparameter* default sudah cukup optimal untuk dataset ini.
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
